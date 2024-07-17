@@ -37,4 +37,4 @@ for f in *.diploid.85.bed; do
 done
 
 # Print the total overlap across all chromosomes
-echo "KSP065 overlap all chroms at 85%: $total_overlap"
+echo "KSP067 overlap all chroms at 85%: $total_overlap"
