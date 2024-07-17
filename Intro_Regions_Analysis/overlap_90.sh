@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Navigate to the directory containing your files
 cd ../Introgression-detection/KSP062/
 
 # Loop over each .90.bed file
