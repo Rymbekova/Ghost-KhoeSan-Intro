@@ -4,7 +4,7 @@ cd ../Introgression-detection/KSP067/
 
 # Loop over each .85.bed file
 for f in *.diploid.85.bed; do
-    # Extract the chromosome number (e.g., 2)
+    # Extract the chromosome number
     chromosome=$(echo "$f" | awk -F'.' '{print $2}')
 
     # Construct the name of the corresponding merged tracts file
