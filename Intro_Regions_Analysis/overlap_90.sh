@@ -21,9 +21,6 @@ done
 # Initialize a variable to keep the total overlap sum
 total_overlap=0
 
-# Navigate to the directory containing your files
-#cd ../Introgression-detection/try_KSP062/
-
 # Loop over each .90.bed file
 for f in *.diploid.95.bed; do
     # Extract the chromosome number (e.g., 2 from HGDP_HGDP01029.2...)
