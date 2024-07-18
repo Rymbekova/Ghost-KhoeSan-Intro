@@ -3,7 +3,7 @@
 cd ../Introgression-detection/KSP062/
 
 # Loop over each .90.bed file
-for f in *.diploid.95.bed; do
+for f in *.diploid.90.bed; do
     # Extract the chromosome number 
     chromosome=$(echo "$f" | awk -F'.' '{print $2}')
 
@@ -22,7 +22,7 @@ done
 total_overlap=0
 
 # Loop over each .90.bed file
-for f in *.diploid.95.bed; do
+for f in *.diploid.90.bed; do
     # Extract the chromosome number (e.g., 2 from HGDP_HGDP01029.2...)
     chromosome=$(echo "$f" | awk -F'.' '{print $2}')
 
