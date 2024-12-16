@@ -9,8 +9,8 @@ with open('all.San.ind', 'r') as file:
 # Loop through each individual name to process their data
 for individual in individual_names:
     # Construct the file paths for input and output
-    input_file = f'{individual}/{individual}_overlap.bed'
-    output_file = f'{individual}/{individual}_random_overlap.bed'
+    input_file = f'{individual}/{individual}.all.merged.tracts.bed'
+    output_file = f'{individual}/{individual}.random.all.merged.tracts.bed'
 
     # Load data without headers
     ranges_df = pd.read_csv(input_file, sep='\t', header=None, names=['chrom', 'start', 'end'])
