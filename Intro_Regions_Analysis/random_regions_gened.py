@@ -321,7 +321,7 @@ def process_individual_in_parallel(
 def main():
     parser = argparse.ArgumentParser(description="Parallel chunk-based script for real+random region densities, with multiple per-chrom VCFs.")
     parser.add_argument('individual', type=str, help="e.g. KSP092")
-    parser.add_argument('--exon_bed', type=str, default="hg38.v35.exon.bed",
+    parser.add_argument('--exon_bed', type=str, default="hg38.v47.exon.bed",
                         help="Path to BED file of exons or genes (for R overlap).")
     parser.add_argument('--chrom_limits', type=str, default="chrom_limits.txt",
                         help="File with chrom, first_pos, last_pos in tab-delimited format.")
