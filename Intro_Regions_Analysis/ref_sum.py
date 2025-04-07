@@ -114,7 +114,6 @@ def process_individual(individual2, bed_files, group2_ids):
 if __name__ == "__main__":
     output_directory = "pairwisediff"
     bed_files = {
-        "HG02568": "pairwisediff/HGDP_HGDP01029_overlap.bed",
         "HG02922": "pairwisediff/KSP062_overlap.bed",
         "HG03052": "pairwisediff/KSP063_overlap.bed",
         "HGDP_HGDP00927": "pairwisediff/KSP065_overlap.bed",
