@@ -1,0 +1,73 @@
+import sys
+sys.path.insert(0, './')
+
+import tskit
+import pybedtools
+from utils.demography import *
+from utils.utils import *
+
+
+configfile: "config/snakemake/config.yaml"
+np.random.seed(config["seed"])
+output_dir = config["output_dir"]
+replicates = config["replicates"]
+seq_len = config["seq_len"] * 10**6
+seed_list = np.random.random_integers(1,2**31,replicates)
+demo_model_list = config["african_models"]
+nref = [50]
+ntgt = [1]
+
+
+rule all:
+    input:
+        expand(output_dir + "simulated_data/{demog}/nref_{nref}/ntgt_{ntgt}/{seed}/sim.trees", 
+               demog=demo_model_list, nref=nref, ntgt=ntgt, seed=seed_list),
+        expand(output_dir + "simulated_data/{demog}/nref_{nref}/ntgt_{ntgt}/{seed}/sim.biallelic.vcf.gz", 
+               demog=demo_model_list, nref=nref, ntgt=ntgt, seed=seed_list),
+        expand(output_dir + "simulated_data/{demog}/nref_{nref}/ntgt_{ntgt}/{seed}/sim.introgressed.tracts.bed", 
+               demog=demo_model_list, nref=nref, ntgt=ntgt, seed=seed_list),
+
+
+
+rule simulation:
+    input:
+    output:
+        ts = output_dir + "simulated_data/{demog}/nref_{nref}/ntgt_{ntgt}/{seed}/sim1src.trees",
+        vcf = output_dir + "simulated_data/{demog}/nref_{nref}/ntgt_{ntgt}/{seed}/sim1src.vcf",
+    threads: 1,
+    resources: time_min=120, mem_mb=5000, cpus=1,
+    run:
+        if wildcards.demog == 'S17':
+            graph = demes.load("config/simulation/models/S17.yaml")
+            demography = msprime.Demography.from_demes(graph)
+            ref_id = 'Western'
+            tgt_id = 'nKS'
+            mutation_rate = 1.29e-8
+            recombination_rate = 1e-08
+
+        samples = [
+            msprime.SampleSet(int(wildcards.nref), ploidy=2, population=ref_id),
+            msprime.SampleSet(int(wildcards.ntgt), ploidy=2, population=tgt_id),
+        ]
+
+        ts = run_simulation(demography=demography, samples=samples, mut_rate=mutation_rate, recomb_rate=recombination_rate, sequence_length=seq_len, random_seed=wildcards.seed)
+        ts.dump(output.ts)
+
+        with open(output.vcf, 'w') as o:
+            ts.write_vcf(o)
+
+
+rule get_biallelic_vcf:
+    input:
+        vcf = output_dir + "simulated_data/{demog}/nref_{nref}/ntgt_{ntgt}/{seed}/sim.vcf",
+    output:
+        vcf = output_dir + "simulated_data/{demog}/nref_{nref}/ntgt_{ntgt}/{seed}/sim.vcf.gz",
+        bvcf = output_dir + "simulated_data/{demog}/nref_{nref}/ntgt_{ntgt}/{seed}/sim.biallelic.vcf.gz",
+    threads: 1,
+    resources: time_min=120, mem_mb=5000, cpus=1,
+    shell:
+        """
+        bcftools view {input.vcf} -m 2 -M 2 | awk -F "\\t" 'BEGIN{{OFS="\\t";ORS=""}}{{if($0~/^#/){{print $0"\\n"}}else{{print $1,$2,$3,"A","T\\t";for(i=6;i<NF;i++){{print $i"\\t"}};print $NF"\\n"}}}}' | bgzip -c > {output.bvcf}
+        bgzip -c {input.vcf} > {output.vcf}
+        rm {input.vcf}
+        """

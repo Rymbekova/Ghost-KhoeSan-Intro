@@ -1,0 +1,8 @@
+output_dir: "results/"
+replicates: 100
+seed: 12345
+seq_len: 200
+african_models: ['S17_nKS', 'B24_nKS', 'S17_deep', 'S17_shallow', 'B24_deep', 'B24_shallow', 'WSS', 'WSS_deep', 'WSS_shallow', 'S17_RHG', 'B24_wRHG', 'B24_eRHG', 'S17_West', 'S17_East', 'B24_RHGn']
+
+ms_exec: "ext/msdir/ms"
+

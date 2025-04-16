@@ -1,0 +1,32 @@
+name: sstar-analysis
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - bcftools
+  - bedtools
+  - demes
+  - demesdraw
+  - gcc
+  - matplotlib
+  - mamba
+  - msprime
+  - numpy
+  - openjdk
+  - pip
+  - pybedtools
+  - python=3.8
+  - r-base=4.1.2
+  - r-essentials=4.1
+  - rpy2
+  - samtools
+  - scikit-allel
+  - scikit-learn
+  - scipy
+  - seaborn
+  - snakemake
+  - tabix
+  - tskit
+  - vcftools
+  - pip:
+      - sstar
