@@ -245,7 +245,7 @@ def process_individual_in_parallel(
     """
     import math
     
-    input_bed = os.path.join(individual, f"{individual}.all.merged.tracts.bed")
+    input_bed = os.path.join(individual, f"{individual}_overlap.bed")
     output_csv = os.path.join(individual, f"{individual}_variant_density.csv")
 
     try:
