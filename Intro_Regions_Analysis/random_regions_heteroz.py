@@ -191,7 +191,7 @@ def save_to_csv(output_file, output_rows, header):
         print(f"Error saving to CSV file: {e}")
 
 def process_individual(individual, snp_dict, snp_tol, snp_dir, chrom_limits, chromosomes):
-    input_file = os.path.join(individual, f"{individual}.all.merged.tracts.bed")
+    input_file = os.path.join(individual, f"{individual}_overlap.bed")
     output_file = os.path.join(individual, f"{individual}_heterozygosity_reset.csv")
     vcf_dir = '/lisc/scratch/admixlab/aigerim/African/'
 
