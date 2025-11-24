@@ -1,0 +1,139 @@
+time_units: generations
+demes:
+- name: B
+  epochs:
+  - {end_time: 0, start_size: 39200}
+- name: A
+  start_time: 51724.137931034486
+  ancestors: [B]
+  epochs:
+  - {end_time: 43103.44827586207, start_size: 1000}
+  - {end_time: 27586.206896551725, start_size: 7000.0}
+  - {end_time: 22413.793103448275, start_size: 12000.0}
+  - {end_time: 18103.44827586207, start_size: 14000.0}
+  - {end_time: 14655.172413793103, start_size: 16000.0}
+  - {end_time: 12068.965517241379, start_size: 25000.0}
+  - {end_time: 0, start_size: 30000.0}
+- name: C
+  start_time: 10344.827586206897
+  ancestors: [A, B]
+  proportions: [0.8, 0.2]
+  epochs:
+  - {end_time: 9680, start_size: 18507}
+- name: AKS
+  ancestors: [C]
+  epochs:
+  - {end_time: 2623, start_size: 86572}
+- name: ARHG_RHGn
+  ancestors: [C]
+  epochs:
+  - {end_time: 6726, start_size: 46968}
+- name: ARHG
+  ancestors: [ARHG_RHGn]
+  epochs:
+  - {end_time: 892, start_size: 57397} 
+- name: RHGn
+  ancestors: [ARHG_RHGn]
+  epochs:
+  - {end_time: 0, start_size: 18022}
+- name: wRHG
+  ancestors: [ARHG]
+  epochs:
+  - {end_time: 0, start_size: 9461}
+- name: eRHG
+  ancestors: [ARHG]
+  epochs:
+  - {end_time: 0, start_size: 12592}
+- name: nKS
+  ancestors: [AKS]
+  epochs:
+  - {end_time: 0, start_size: 14184}  
+- name: sKS
+  ancestors: [AKS]
+  epochs:
+  - {end_time: 0, start_size: 11042}  
+pulses:
+- sources: [AKS]
+  dest: ARHG_RHGn
+  time: 9679
+  proportions: [0.5357]
+- sources: [ARHG_RHGn]
+  dest: AKS
+  time: 9678
+  proportions: [0.3359]
+- sources: [AKS]
+  dest: RHGn
+  time: 4490
+  proportions: [0.4066]
+- sources: [RHGn]
+  dest: AKS
+  time: 4491
+  proportions: [0.7032]
+- sources: [AKS]
+  dest: ARHG
+  time: 4408
+  proportions: [0.5824]
+- sources: [ARHG]
+  dest: AKS
+  time: 4407
+  proportions: [0.4734]
+- sources: [RHGn]
+  dest: ARHG
+  time: 2756
+  proportions: [0.5802]
+- sources: [ARHG]
+  dest: RHGn
+  time: 2757
+  proportions: [0.4081]
+- sources: [nKS]
+  dest: RHGn
+  time: 1383
+  proportions: [0.4827]
+- sources: [RHGn]
+  dest: nKS
+  time: 1382
+  proportions: [0.3668]
+- sources: [sKS]
+  dest: RHGn
+  time: 1142
+  proportions: [0.4810]
+- sources: [RHGn]
+  dest: sKS
+  time: 1141
+  proportions: [0.4920]
+- sources: [wRHG]
+  dest: eRHG
+  time: 411
+  proportions: [0.5034]
+- sources: [eRHG]
+  dest: wRHG
+  time: 410
+  proportions: [0.5453]
+- sources: [nKS]
+  dest: sKS
+  time: 395
+  proportions: [0.6727]
+- sources: [sKS]
+  dest: nKS
+  time: 396
+  proportions: [0.7330]
+- sources: [eRHG]
+  dest: RHGn
+  time: 393
+  proportions: [0.6072]
+- sources: [RHGn]
+  dest: eRHG
+  time: 394
+  proportions: [0.3305]
+- sources: [wRHG]
+  dest: RHGn
+  time: 302
+  proportions: [0.3925]
+- sources: [RHGn]
+  dest: wRHG
+  time: 303
+  proportions: [0.6461]
+
+
+
+

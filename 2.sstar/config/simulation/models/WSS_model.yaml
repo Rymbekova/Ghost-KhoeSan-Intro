@@ -1,0 +1,89 @@
+time_units: generations
+demes:
+- name: Ancestral
+  epochs:
+  - {end_time: 58344, start_size: 9640}
+- name: Stem2
+  ancestors: [Ancestral]
+  start_time: 58344
+  epochs:
+  - {end_time: 866, start_size: 24210}
+- name: Stem1
+  ancestors: [Ancestral]
+  start_time: 58344
+  epochs:
+  - {end_time: 16527, start_size: 10000}
+  - {end_time: 16517, start_size: 100}
+- name: Neanderthal
+  ancestors: [Stem1]
+  start_time: 16527
+  epochs:
+  - {end_time: 1379, start_size: 2520}
+- name: Stem1S
+  ancestors: [Stem1]
+  start_time: 16517
+  epochs:
+  - {end_time: 4120, start_size: 10000}
+- name: Stem1E
+  ancestors: [Stem1]
+  start_time: 16517
+  epochs:
+  - {end_time: 3320, start_size: 10000}  
+  
+- name: Nama
+  ancestors: [Stem1S, Stem2]
+  proportions: [0.302 ,0.698]
+  start_time: 4120
+  epochs:
+  - {end_time: 9, start_size: 13440}
+  - {end_time: 0, start_size: 219}
+    
+- name: Gumuz
+  ancestors: [Stem1E, Stem2]
+  proportions: [0.485, 0.515]
+  start_time: 3320
+  epochs:
+  - {end_time: 172, start_size: 9100}  
+  - {end_time: 0, start_size: 3410}
+  
+- name: British
+  ancestors: [Gumuz]
+  start_time: 1724
+  epochs:
+  - {end_time: 1379, start_size: 958}
+  - {end_time: 0, start_size: 12300}
+  
+- name: Amhara
+  ancestors: [Gumuz, British]
+  proportions: [0.36, 0.64]
+  start_time: 413
+  epochs:
+  - {end_time: 0, start_size: 13510}
+  
+- name: Mende
+  ancestors: [Gumuz]
+  start_time: 2068
+  epochs:
+  - {end_time: 172, start_size: 11380}
+  - {end_time: 0, start_size: 27760}
+  
+pulses:
+- {sources: [Stem2], dest: Mende, time: 866, proportions: [0.187]}
+- {sources: [Amhara], dest: Nama, time: 69, proportions: [0.259]}
+- {sources: [British], dest: Nama, time: 10, proportions: [0.158]}
+- {sources: [Neanderthal], dest: British, time: 1379, proportions : [0.02]}
+
+migrations:
+- demes: [Nama, Mende]
+  rate: 9.8e-6
+- demes: [Nama, Amhara]
+  rate: 4.48e-5
+- demes: [Mende, Amhara]
+  rate: 19.7e-5
+- demes: [Amhara, British]
+  rate: 3.82e-5
+- demes: [Gumuz, Amhara]
+  rate: 35.9e-5
+- demes: [Stem1, Stem2]
+  rate: 12.6e-5
+    

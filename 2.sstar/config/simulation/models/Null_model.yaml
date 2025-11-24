@@ -1,0 +1,21 @@
+time_units: generations
+demes:
+- name: Anc_Homo
+  epochs:
+  - {end_time: 11200, start_size: 10000}
+- name: Anc_nonSan
+  ancestors: [Anc_Homo]
+  epochs:
+  - {end_time: 7848, start_size: 35688} 
+- name: RHGn
+  ancestors: [Anc_nonSan]
+  epochs:
+  - {end_time: 0, start_size: 38612}
+- name: RHG
+  ancestors: [Anc_nonSan]
+  epochs:
+  - {end_time: 0, start_size: 37495}
+- name: Anc_San
+  ancestors: [Anc_Homo]
+  epochs:
+  - {end_time: 0, start_size: 41599}  

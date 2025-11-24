@@ -1,0 +1,44 @@
+time_units: generations
+demes:
+- name: Anc
+  epochs:
+  - {end_time: 9600, start_size: 10000}
+- name: Anc_nonSan
+  ancestors: [Anc]
+  epochs:
+  - {end_time: 7848, start_size: 10000} 
+- name: Anc_San
+  ancestors: [Anc]
+  epochs:
+  - {end_time: 6373, start_size: 10000}
+- name: Anc_nonRHG
+  ancestors: [Anc_nonSan]
+  epochs:
+  - {end_time: 5063, start_size: 10000}
+- name: nKS
+  ancestors: [Anc_San]
+  start_time: 6373
+  epochs:
+  - {end_time: 0, start_size: 10000}   
+- name: sKS
+  ancestors: [Anc_San]
+  start_time: 6373
+  epochs:
+  - {end_time: 0, start_size: 10000} 
+- name: RHG
+  ancestors: [Anc_nonSan]
+  epochs:
+  - {end_time: 0, start_size: 10000}
+- name: Western
+  ancestors: [Anc_nonRHG]
+  epochs:
+  - {end_time: 0, start_size: 10000}
+- name: Eastern
+  ancestors: [Anc_nonRHG]
+  epochs:
+  - {end_time: 0, start_size: 10000}  
+- name: non_A
+  ancestors: [Eastern]
+  start_time: 4140
+  epochs:
+  - {end_time: 0, start_size: 10000}  
