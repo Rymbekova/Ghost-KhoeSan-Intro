@@ -1,31 +1,19 @@
 time_units: generations
 demes:
-- name: B
-  epochs:
-  - {end_time: 0, start_size: 39200}
 - name: A
-  start_time: 51724.137931034486
-  ancestors: [B]
   epochs:
-  - {end_time: 43103.44827586207, start_size: 1000}
-  - {end_time: 27586.206896551725, start_size: 7000.0}
-  - {end_time: 22413.793103448275, start_size: 12000.0}
-  - {end_time: 18103.44827586207, start_size: 14000.0}
-  - {end_time: 14655.172413793103, start_size: 16000.0}
-  - {end_time: 12068.965517241379, start_size: 25000.0}
-  - {end_time: 0, start_size: 30000.0}
-- name: C
-  start_time: 10344.827586206897
-  ancestors: [A, B]
-  proportions: [0.8, 0.2]
+  - {end_time: 12117, start_size: 18507}
+- name: Ghost
+  ancestors: [A]
+  start_time: 50000
   epochs:
-  - {end_time: 9680, start_size: 18507}
-- name: AKS
-  ancestors: [C]
+  - {end_time: 0, start_size: 10000}
+- name: KS
+  ancestors: [A]
   epochs:
-  - {end_time: 2623, start_size: 86572}
+  - {end_time: 0, start_size: 86572}
 - name: ARHG_RHGn
-  ancestors: [C]
+  ancestors: [A]
   epochs:
   - {end_time: 6726, start_size: 46968}
 - name: ARHG
@@ -44,37 +32,30 @@ demes:
   ancestors: [ARHG]
   epochs:
   - {end_time: 0, start_size: 12592}
-- name: nKS
-  ancestors: [AKS]
-  epochs:
-  - {end_time: 0, start_size: 14184}  
-- name: sKS
-  ancestors: [AKS]
-  epochs:
-  - {end_time: 0, start_size: 11042}  
+
 pulses:
-- sources: [AKS]
+- sources: [KS]
   dest: ARHG_RHGn
   time: 9679
   proportions: [0.5357]
 - sources: [ARHG_RHGn]
-  dest: AKS
+  dest: KS
   time: 9678
   proportions: [0.3359]
-- sources: [AKS]
+- sources: [KS]
   dest: RHGn
   time: 4490
   proportions: [0.4066]
 - sources: [RHGn]
-  dest: AKS
+  dest: KS
   time: 4491
   proportions: [0.7032]
-- sources: [AKS]
+- sources: [KS]
   dest: ARHG
   time: 4408
   proportions: [0.5824]
 - sources: [ARHG]
-  dest: AKS
+  dest: KS
   time: 4407
   proportions: [0.4734]
 - sources: [RHGn]
@@ -85,22 +66,14 @@ pulses:
   dest: RHGn
   time: 2757
   proportions: [0.4081]
-- sources: [nKS]
+- sources: [KS]
   dest: RHGn
   time: 1383
   proportions: [0.4827]
 - sources: [RHGn]
-  dest: nKS
+  dest: KS
   time: 1382
   proportions: [0.3668]
-- sources: [sKS]
-  dest: RHGn
-  time: 1142
-  proportions: [0.4810]
-- sources: [RHGn]
-  dest: sKS
-  time: 1141
-  proportions: [0.4920]
 - sources: [wRHG]
   dest: eRHG
   time: 411
@@ -109,14 +82,6 @@ pulses:
   dest: wRHG
   time: 410
   proportions: [0.5453]
-- sources: [nKS]
-  dest: sKS
-  time: 395
-  proportions: [0.6727]
-- sources: [sKS]
-  dest: nKS
-  time: 396
-  proportions: [0.7330]
 - sources: [eRHG]
   dest: RHGn
   time: 393
@@ -133,7 +98,7 @@ pulses:
   dest: wRHG
   time: 303
   proportions: [0.6461]
-
-
-
-
+- sources: [Ghost]
+  dest: KS
+  time: 2758
+  proportions: [0.02]
