@@ -16,8 +16,8 @@ for chr in {1..22}; do
         -i "$input_vcf"
 
     if [ $? -eq 0 ]; then
-        echo "✅ Finished chromosome $chr"
+        echo "Finished chromosome $chr"
     else
-        echo "❌ Failed chromosome $chr"
+        echo "Failed chromosome $chr"
     fi
 done
