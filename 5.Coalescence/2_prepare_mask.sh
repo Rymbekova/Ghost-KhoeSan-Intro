@@ -17,7 +17,7 @@ sample_file="sample/Archaic_African_${chr}.sample"
 mask_file="/lisc/scratch/admixlab/aigerim/shapeit5/African/vcf/relate/African/Relate_input_files/GRCh38/20160622_genome_mask_GRCh38/PilotMask/20160622.chr${chr}.pilot_mask.fasta.gz"
 ancestor_file="/lisc/scratch/admixlab/aigerim/shapeit5/African/vcf/relate/African/Relate_input_files/GRCh38/human_ancestor_GRCh38/homo_sapiens_ancestor_${chr}.fa.gz"
 
-echo "🔧 Chromosome ${chr}"
+echo "Chromosome ${chr}"
 echo "   HAPS     : ${haps_file}"
 echo "   SAMPLE   : ${sample_file}"
 echo "   MASK     : ${mask_file}"
@@ -32,7 +32,7 @@ echo "   ANCESTOR : ${ancestor_file}"
 
 rc=$?
 if [ $rc -eq 0 ]; then
-  echo "✅ Finished chromosome ${chr}"
+  echo "Finished chromosome ${chr}"
 else
-  echo "❌ Failed chromosome ${chr} (exit ${rc})"
+  echo "Failed chromosome ${chr} (exit ${rc})"
 fi
