@@ -18,7 +18,7 @@ memory=5
 chr=${SLURM_ARRAY_TASK_ID}
 map_file="/lisc/scratch/admixlab/aigerim/shapeit5/African/vcf/relate/African/Relate_input_files/GRCh38/recomb_map/genetic_map_chr${chr}.txt"
 
-echo "🧬 Running RelateParallel for chr${chr}"
+echo "Running RelateParallel for chr${chr}"
 echo "   --haps   ${input_prefix}_${chr}.haps.gz"
 echo "   --sample ${input_prefix}_${chr}.sample.gz"
 echo "   --dist   ${input_prefix}_${chr}.dist.gz"
@@ -42,7 +42,7 @@ echo "   --memory ${memory}"
 
 rc=$?
 if [ $rc -ne 0 ]; then
-    echo "❌ RelateParallel failed on chr${chr} (exit ${rc})"
+    echo "RelateParallel failed on chr${chr} (exit ${rc})"
     exit $rc
 fi
 
@@ -50,4 +50,4 @@ fi
 gzip -f "${output_prefix}_chr${chr}.anc"
 gzip -f "${output_prefix}_chr${chr}.mut"
 
-echo "✅ Chromosome ${chr} complete!"
+echo "Chromosome ${chr} complete"
